@@ -1,0 +1,83 @@
+/*	Date: 2014-11-09 
+	Autor: Roman Pantring
+	Language: German
+	City: Berlin
+
+	HTML5 JavaScript Image Gallery with LightBox	
+	
+*/
+#Box{ position:fixed; left:0px; top:0px; z-index:1000; width:100%; height:100%; background-color: transparent; /* background:rgba(0,0,0,0.8); */ 	
+}
+#Box.turnon{
+    background-color: #000;
+	opacity: 0.8; 
+    transition-duration: 300ms, 300ms;
+    transition-property: background, opacity;	
+}
+#Image.turnoff,
+#ImageBox.turnoff,
+#Box.turnoff{
+    background-color: #000;
+	opacity: 0; 
+    transition-duration: 300ms, 300ms;
+    transition-property: background, opacity;	
+}
+#ImageBox.turnon{
+    background-color: transparent;
+	opacity: 1; 
+    transition-duration: 300ms, 300ms;
+    transition-property: background, opacity;	
+}
+#ImageBox{z-index:1001; position:fixed;top:0px; left:0px; width:100%; height:100%; margin:0% 0; text-align:center; background-color: transparent; opacity:0; cursor:pointer;}
+#ImageBox > div{ 
+	background-repeat:no-repeat;
+    background-size:cover; /* contain,cover */
+	margin: auto;	
+    width: 100%;
+	max-width:100%;
+	height: 100%;
+	position:relative;
+	cursor:default !important;
+	z-index:1002;
+	background-position:top center;
+}
+#ImageBox #imagenav{ z-index:1004; position:absolute; top:0px;}
+#ImageBox #FileName{ position:relative; top:95%; color:#fff;}
+#ImageBox #Image2{ }
+#ImageBox #Image{position:absolute;top:0px;}
+#ImageBox #Image #FileName{ position:absolute; bottom:10px; color:#fff; text-align:center; width:100%; font-size:1em; }
+#ImageBox div div.arrow{width:50%; height:100%; position:absolute; z-index:1;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+#ImageBox div div.arrow.left{left:0px;}
+#ImageBox div div.arrow.right{right:0px;}
+#ImageBox div a{ color:white; height:30%; top:40%; position:absolute; font-size:3em; text-shadow: 1px 1px 1px #000; line-height:100%; vertical-align:middle; display:block; padding:0px 25px;
+	opacity: 0; 
+    transition-duration: 300ms, 300ms;
+    transition-property: background, opacity;
+	/* cursor:pointer; */
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	text-align:center;
+}
+#ImageBox div a:hover{
+	opacity: 1; 
+    transition-duration: 300ms, 300ms;
+    transition-property: background, opacity;	
+}
+#ImageBox #close{ position:absolute; font-size:2em; z-index:2; top:30px; right:30px;}
+#ImageBox #close a.close{top:0px; opacity: 0.5; font-size:1.5em; padding:15px; position:relative;}
+#ImageBox #close a.close:hover{opacity: 1; cursor:pointer;}
+#ImageBox div a.left{left:10%; text-align:left;}
+#ImageBox div a.right{right:10%; text-align:right; }
+form.galerie{ margin:25px;}
+form.galerie label{ width:160px; text-align:center; display:block; float:left;}
+form.galerie input{ width:150px;}

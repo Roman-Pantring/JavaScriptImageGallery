@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+	Date: 2014-11-09 
+	Autor: Roman Pantring
+	Language: German
+	City: Berlin
+
+	HTML5 JavaScript Image Gallery with LightBox	
+-->
+	<title>JavaScript Image Gallery</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="galerie.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="galerie.php" type="text/javascript"></script>
+	<style>
+	body{ 
+		margin:auto;
+		padding:0px;
+		background:#fff;
+		color:#000;
+		font-family:"Arial","sans-serif","Tahoma";
+		font-size:100%;
+		width:624px; /*4x156*/
+		-webkit-text-size-adjust: none;
+		}
+	#galerie img {
+		border: 5px solid #fff;
+		box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.75);
+		width: 146px;
+	}
+	</style>
+	<style>
+	@media screen and (max-width: 534px){
+		body{min-width:468px; max-width:468px; /*468*/}
+	}	
+	</style>
+	<script>
+	jQuery(document).ready(function( $ ) {
+		viewport();	
+	});
+	</script>
+</head>
+
+<body onload="viewport();" onresize="viewport();"> 
+<div>
+	<h1>JavaScript Image Gallery</h1>
+	<form class="galerie"><label for="Images">Images</label><input type="number" min="1" max="26" value="8" name="Images" id="Images"><br><label for="maxlines">Galerie Zeilen</label><input type="number" min="1" max="9" value="2" name="maxlines" id="maxlines" ></form> <!-- oninput="showGalerie(this.value);"  onchange="showGalerie(this.value);"  -->
+	<div id="galerie"></div>		
+<script>
+galerieImages(lineCount);
+document.getElementById('Images').addEventListener("input", function(){
+	if(this.value<1) this.value = 1;
+	if(this.value>maxImages) this.value = maxImages;
+	
+	maxlines = Math.ceil(this.value/lineCount);
+	document.getElementById('maxlines').value = maxlines;
+	Images = this.value;
+	showGalerie(maxlines);
+});	
+document.getElementById('maxlines').addEventListener("input", function(){
+	if(this.value<1) this.value = 1;
+	if(this.value>maxlines) this.value = maxlines;
+	
+	Images = this.value*lineCount;	
+	if(Images>galerie.images.length) Images = galerie.images.length;
+	document.getElementById('Images').value = Images;
+	showGalerie(this.value);
+});
+</script>
+	<noscript><a href="Sample_Pictures/Desert.jpg" target="_blank"><img src="Sample_Pictures/Desert.jpg" alt="Desert" title="Desert"></a> <a href="Sample_Pictures/Chrysanthemum.jpg" target="_blank"><img src="Sample_Pictures/Chrysanthemum.jpg" alt="Chrysanthemum" title="Chrysanthemum"></a> <a href="Sample_Pictures/Hydrangeas.jpg" target="_blank"><img src="Sample_Pictures/Hydrangeas.jpg" alt="Hydrangeas" title="Hydrangeas"></a><br> 
+	<a href="Sample_Pictures/Jellyfish.jpg" target="_blank"><img src="Sample_Pictures/Jellyfish.jpg" alt="Jellyfish" title="Jellyfish"></a> <a href="Sample_Pictures/Koala.jpg" target="_blank"><img src="Sample_Pictures/Koala.jpg" alt="Koala" title="Koala"></a> <a href="Sample_Pictures/Tulips.jpg" target="_blank"><img src="Sample_Pictures/Tulips.jpg" alt="Tulips" title="Tulips"></a></noscript>
+</div>
+</body>
+</html>
